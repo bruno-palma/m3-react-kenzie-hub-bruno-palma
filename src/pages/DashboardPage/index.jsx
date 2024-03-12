@@ -1,17 +1,20 @@
-import { Link } from "react-router-dom";
 import LogoKenzieHub from "../../assets/Logo.svg";
+import { useContext } from "react";
+import { UserContext } from "../../providers/UserContext";
 
 export const DashboardPage = () => {
+  const { user, userLogout } = useContext(UserContext);
+
   return (
     <>
       <header>
         <img src={LogoKenzieHub} alt="Logo Kenzie Hub" />
-        <Link to={"/"}>Sair</Link>
+        <button onClick={userLogout}>Sair</button>
       </header>
       <main>
         <section>
-          <h1>Olá, Usuário</h1>
-          <h4>Primeiro módulo (Introdução ao Frontend)</h4>
+          {user ? <h1>Olá, {user.name}</h1> : null}
+          {user ? <h4>{user.course_module}</h4> : null}
         </section>
         <section>
           <h1>Que pena! Estamos em desenvolvimento :(</h1>

@@ -12,7 +12,7 @@ export const RegisterPage = () => {
       <main>
         <div>
           <h2>Crie sua conta</h2>
-          <h4>Rapido e grátis, vamos nessa</h4>
+          <h4>Rápido e grátis, vamos nessa...</h4>
           <RegisterForm />
         </div>
       </main>
