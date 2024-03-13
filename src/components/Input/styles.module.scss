@@ -1,0 +1,44 @@
+.div {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-bottom: 1rem;
+
+  .label {
+    color: var(--grey-0);
+    font-size: var(--headline-size);
+    font-weight: var(--font-regular);
+  }
+
+  .input {
+    border: none;
+    color: var(--grey-0);
+    background-color: var(--grey-2);
+    border-radius: var(--radius-default);
+    padding: 0.7rem;
+
+    &:focus {
+      outline: none;
+      color: var(--grey-0);
+      border: var(--border-default);
+    }
+
+    &:-webkit-autofill {
+      -webkit-text-fill-color: var(--grey-0);
+      -webkit-box-shadow: 0 0 0 100px var(--grey-2) inset;
+    }
+
+    &::placeholder {
+      color: var(--grey-1);
+      font-size: var(--headline-size);
+      font-weight: var(--font-regular);
+    }
+  }
+
+  .text {
+    color: var(--grey-0);
+    font-size: var(--headline-size);
+    font-weight: var(--font-bold);
+  }
+}

@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 import { api } from "../services";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export const UserContext = createContext({});
 
@@ -16,7 +17,16 @@ export const UserProvider = ({ children }) => {
       setUser(data.user);
       navigate("/dashboard");
     } catch (error) {
-      console.log(error);
+      toast.error("Email ou Senha incorretos.", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     }
   };
 
@@ -24,9 +34,28 @@ export const UserProvider = ({ children }) => {
     try {
       const { confirmPassword, ...rest } = formData;
       const { data } = await api.post("/users", rest);
+      toast.success("Conta criada com sucesso!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
       navigate("/");
     } catch (error) {
-      console.log(error);
+      toast.error("Ops! Algo deu errado.", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     }
   };
 
@@ -48,7 +77,6 @@ export const UserProvider = ({ children }) => {
         setUser(data);
         navigate("/dashboard");
       } catch (error) {
-        console.log(error);
         localStorage.removeItem("@KenzieHub:Token");
       }
     }
@@ -56,7 +84,13 @@ export const UserProvider = ({ children }) => {
 
   return (
     <UserContext.Provider
-      value={{ user, userLogin, userRegister, userLogout, userAutoLogin }}
+      value={{
+        user,
+        userLogin,
+        userRegister,
+        userLogout,
+        userAutoLogin,
+      }}
     >
       {children}
     </UserContext.Provider>

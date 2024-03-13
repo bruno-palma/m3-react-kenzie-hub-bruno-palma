@@ -1,1 +1,25 @@
 @import url("./reset.scss");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+:root {
+  --color-primary: #ff577f;
+  --color-primary-focus: #ff427f;
+  --color-primary-negative: #59323f;
+
+  --grey-4: #121214;
+  --grey-3: #212529;
+  --grey-2: #343b41;
+  --grey-1: #868e96;
+  --grey-0: #f8f9fa;
+
+  --title-1-size: 1.125rem;
+  --title-2-size: 1rem;
+  --headline-size: 0.75rem;
+
+  --font-extra-bold: 700;
+  --font-bold: 600;
+  --font-regular: 400;
+
+  --border-default: 1px solid var(--grey-0);
+  --radius-default: 4px;
+}

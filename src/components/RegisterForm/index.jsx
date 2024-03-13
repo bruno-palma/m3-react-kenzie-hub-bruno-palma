@@ -14,8 +14,6 @@ export const RegisterForm = () => {
     formState: { errors },
   } = useForm({ resolver: zodResolver(registerFormSchema) });
 
-  //   Adicionar o errors nos inputs vindo do useForm
-
   return (
     <form onSubmit={handleSubmit(userRegister)}>
       <Input

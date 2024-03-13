@@ -14,8 +14,6 @@ export const LoginForm = () => {
     formState: { errors },
   } = useForm({ resolver: zodResolver(loginFormSchema) });
 
-  //   Adicionar o errors nos inputs vindo do useForm
-
   return (
     <form onSubmit={handleSubmit(userLogin)}>
       <Input
@@ -32,7 +30,9 @@ export const LoginForm = () => {
         placeholder="Digite aqui sua senha"
         {...register("password")}
       />
-      <button type="submit">Entrar</button>
+      <button className="button-default" type="submit">
+        Entrar
+      </button>
     </form>
   );
 };
