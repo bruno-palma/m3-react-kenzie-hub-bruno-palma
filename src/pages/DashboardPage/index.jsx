@@ -1,9 +1,13 @@
 import LogoKenzieHub from "../../assets/Logo.svg";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { UserContext } from "../../providers/UserContext";
 
 export const DashboardPage = () => {
-  const { user, userLogout } = useContext(UserContext);
+  const { user, userLogout, userAutoLogin } = useContext(UserContext);
+
+  useEffect(() => {
+    userAutoLogin();
+  }, []);
 
   return (
     <>

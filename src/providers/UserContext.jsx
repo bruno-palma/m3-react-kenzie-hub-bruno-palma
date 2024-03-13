@@ -36,11 +36,28 @@ export const UserProvider = ({ children }) => {
     navigate("/");
   };
 
-  // Token localStorage
-  // Função de autologin
+  const userAutoLogin = async () => {
+    const token = localStorage.getItem("@KenzieHub:Token");
+    if (token) {
+      try {
+        const { data } = await api.get("/profile", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setUser(data);
+        navigate("/dashboard");
+      } catch (error) {
+        console.log(error);
+        localStorage.removeItem("@KenzieHub:Token");
+      }
+    }
+  };
 
   return (
-    <UserContext.Provider value={{ user, userLogin, userRegister, userLogout }}>
+    <UserContext.Provider
+      value={{ user, userLogin, userRegister, userLogout, userAutoLogin }}
+    >
       {children}
     </UserContext.Provider>
   );

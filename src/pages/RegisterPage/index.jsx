@@ -1,8 +1,16 @@
 import LogoKenzieHub from "../../assets/Logo.svg";
 import { Link } from "react-router-dom";
 import { RegisterForm } from "../../components/RegisterForm";
+import { useContext, useEffect } from "react";
+import { UserContext } from "../../providers/UserContext";
 
 export const RegisterPage = () => {
+  const { userAutoLogin } = useContext(UserContext);
+
+  useEffect(() => {
+    userAutoLogin();
+  }, []);
+
   return (
     <>
       <header>
