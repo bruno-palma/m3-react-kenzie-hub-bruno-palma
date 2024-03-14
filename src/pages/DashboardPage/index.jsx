@@ -1,6 +1,7 @@
 import LogoKenzieHub from "../../assets/Logo.svg";
 import { useContext, useEffect } from "react";
 import { UserContext } from "../../providers/UserContext";
+import styles from "./styles.module.scss";
 
 export const DashboardPage = () => {
   const { user, userLogout, userAutoLogin } = useContext(UserContext);
@@ -11,20 +12,24 @@ export const DashboardPage = () => {
 
   return (
     <>
-      <header>
+      <header className={styles.header}>
         <img src={LogoKenzieHub} alt="Logo Kenzie Hub" />
-        <button onClick={userLogout}>Sair</button>
+        <button className={styles.button} onClick={userLogout}>
+          Sair
+        </button>
       </header>
       <main>
-        <section>
-          {user ? <h1>Olá, {user.name}</h1> : null}
-          {user ? <h4>{user.course_module}</h4> : null}
+        <section className={styles.info}>
+          <div>
+            {user ? <h2>Olá, {user.name}</h2> : null}
+            {user ? <h4>{user.course_module}</h4> : null}
+          </div>
         </section>
-        <section>
-          <h1>Que pena! Estamos em desenvolvimento :(</h1>
-          <h2>
+        <section className={styles.content}>
+          <h2>Que pena! Estamos em desenvolvimento :(</h2>
+          <h3>
             Nossa aplicação está em desenvolvimento, em breve teremos novidades
-          </h2>
+          </h3>
         </section>
       </main>
     </>
