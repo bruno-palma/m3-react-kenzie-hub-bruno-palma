@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { registerFormSchema } from "./registerForm.schema";
 import { useContext } from "react";
 import { UserContext } from "../../providers/UserContext";
+import styles from "./styles.module.scss";
 
 export const RegisterForm = () => {
   const { userRegister } = useContext(UserContext);
@@ -58,24 +59,30 @@ export const RegisterForm = () => {
         placeholder="Opção de contato"
         {...register("contact")}
       />
-      <label>Selecionar Módulo</label>
-      <select {...register("course_module")}>
-        <option value="">Selecione seu módulo</option>
-        <option value="Primeiro módulo (Introdução ao Frontend)">
-          Primeiro Módulo (Introdução ao Frontend)
-        </option>
-        <option value="Segundo módulo (Frontend Avançado)">
-          Segundo Módulo (Frontend Avançado)
-        </option>
-        <option value="Terceiro módulo (Introdução ao Backend)">
-          Terceiro Módulo (Introdução ao Backend)
-        </option>
-        <option value="Quarto módulo (Backend Avançado)">
-          Quarto Módulo (Backend Avançado)
-        </option>
-      </select>
-      {errors.course_module ? <p>{errors.course_module.message}</p> : null}
-      <button type="submit">Cadastrar</button>
+      <div className={styles.div}>
+        <label className={styles.label}>Selecionar Módulo</label>
+        <select className={styles.select} {...register("course_module")}>
+          <option value="">Selecione seu módulo</option>
+          <option value="Primeiro módulo (Introdução ao Frontend)">
+            Primeiro Módulo (Introdução ao Frontend)
+          </option>
+          <option value="Segundo módulo (Frontend Avançado)">
+            Segundo Módulo (Frontend Avançado)
+          </option>
+          <option value="Terceiro módulo (Introdução ao Backend)">
+            Terceiro Módulo (Introdução ao Backend)
+          </option>
+          <option value="Quarto módulo (Backend Avançado)">
+            Quarto Módulo (Backend Avançado)
+          </option>
+        </select>
+        {errors.course_module ? (
+          <p className={styles.text}>{errors.course_module.message}</p>
+        ) : null}
+      </div>
+      <button className={styles.button} type="submit">
+        Cadastrar
+      </button>
     </form>
   );
 };
